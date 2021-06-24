@@ -1,9 +1,15 @@
-import React from 'react';
-import Table from '@material-ui/core/Table';
-import { TableBody, TableCell, TableRow } from '@material-ui/core';
-import Paper from '@material-ui/core/Paper';
+import React, { useState, useEffect } from 'react';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+  Paper,
+} from '@material-ui/core';
 
+import { getOrders } from '../../services/ordersServices';
 import Header from '../../componentes/Header';
+import { dateFormat } from '../../utils/dateFormat';
 import {
   Container,
   ContentPage,
@@ -12,9 +18,16 @@ import {
   TbHead,
   TbCellHead,
   ViewIcon,
+  InsertBtn,
 } from './styles';
 
 function Orders() {
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    getOrders().then((resp) => setOrders(resp));
+  }, []);
+
   return (
     <>
       <Header />
@@ -33,20 +46,25 @@ function Orders() {
                 </TableRow>
               </TbHead>
               <TableBody>
-                <TableRow key>
-                  <TableCell component="th" scope="row">
-                    1
-                  </TableCell>
-                  <TableCell align="center">23/06/12</TableCell>
-                  <TableCell align="center">Carlos Henrique</TableCell>
-                  <TableCell align="center">R$ 100,00</TableCell>
-                  <TableCell align="center">
-                    <ViewIcon titleAccess="Visualizar Pedido" />
-                  </TableCell>
-                </TableRow>
+                {orders.map((order, index) => (
+                  <TableRow key={index}>
+                    <TableCell component="th" scope="row">
+                      {index + 1}
+                    </TableCell>
+                    <TableCell align="center">
+                      {dateFormat(order.createdAt)}
+                    </TableCell>
+                    <TableCell align="center">{order.User.name}</TableCell>
+                    <TableCell align="center">R$ {order.totalValue}</TableCell>
+                    <TableCell align="center">
+                      <ViewIcon titleAccess="Visualizar Pedido" />
+                    </TableCell>
+                  </TableRow>
+                ))}
               </TableBody>
             </Table>
           </TableWrap>
+          <InsertBtn>Cadastrar</InsertBtn>
         </ContentPage>
       </Container>
     </>

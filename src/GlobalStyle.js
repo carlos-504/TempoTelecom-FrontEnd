@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 // Global Variables
 export const primaryColor = '#0a233a';
 export const primaryColorDeep = '#03325d';
+export const secondaryColor = '#22394d';
 export const white = '#ffffff';
 export const backgroundColor = '#f1f1f1';
 export const backgroundColorDeep = '#e0dcdc';
