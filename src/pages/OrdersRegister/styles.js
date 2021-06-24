@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import {
-  primaryColor,
   white,
-  primaryColorDeep,
   secondaryColor,
   backgroundColor,
   success,
@@ -13,7 +11,6 @@ export const Container = styled.div`
   min-height: calc(100vh - 58px);
   display: flex;
   justify-content: center;
-  /* align-items: center; */
 `;
 
 export const ContentPage = styled.div`
@@ -22,7 +19,6 @@ export const ContentPage = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* border: 1px solid black; */
 `;
 
 export const Typography = styled.div`
@@ -46,12 +42,10 @@ export const FormBox = styled.div`
   box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   width: 100%;
-  /* height: 70%; */
 
   & form {
     display: flex;
     flex-direction: column;
-    /* width: 100%; */
 
     & .MuiFormControl-root {
       margin: 10px 0;
