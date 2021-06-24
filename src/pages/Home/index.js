@@ -22,7 +22,7 @@ function Home() {
         <ContentPage>
           <Store src={StoreImg} alt="img-loja" />
           <GroupButtons>
-            <InsertBtn onClick={() => history.push('/cadastrar-pedido')}>
+            <InsertBtn onClick={() => history.push('/cadastrar-pedidos')}>
               Cadastrar
             </InsertBtn>
             <ListBtn onClick={() => history.push('/listar-pedidos')}>

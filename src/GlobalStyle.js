@@ -7,6 +7,8 @@ export const secondaryColor = '#22394d';
 export const white = '#ffffff';
 export const backgroundColor = '#f1f1f1';
 export const backgroundColorDeep = '#e0dcdc';
+export const success = '#24bd24';
+export const successHover = '#35a035';
 
 // Reset CSS
 export const GlobalStyle = createGlobalStyle`

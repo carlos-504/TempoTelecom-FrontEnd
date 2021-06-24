@@ -6,6 +6,7 @@ import {
   TableRow,
   Paper,
 } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 
 import { getOrders } from '../../services/ordersServices';
 import Header from '../../componentes/Header';
@@ -23,6 +24,7 @@ import {
 
 function Orders() {
   const [orders, setOrders] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     getOrders().then((resp) => setOrders(resp));
@@ -64,7 +66,9 @@ function Orders() {
               </TableBody>
             </Table>
           </TableWrap>
-          <InsertBtn>Cadastrar</InsertBtn>
+          <InsertBtn onClick={() => history.push('/cadastrar-pedidos')}>
+            Cadastrar
+          </InsertBtn>
         </ContentPage>
       </Container>
     </>
