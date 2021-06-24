@@ -25,7 +25,7 @@ function Home() {
             <InsertBtn onClick={() => history.push('/cadastrar-pedido')}>
               Cadastrar
             </InsertBtn>
-            <ListBtn onClick={() => history.push('/listar-pedido')}>
+            <ListBtn onClick={() => history.push('/listar-pedidos')}>
               Listar
             </ListBtn>
           </GroupButtons>
