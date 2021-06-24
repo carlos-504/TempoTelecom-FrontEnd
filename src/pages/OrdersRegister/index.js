@@ -85,7 +85,7 @@ function OrdersRegister() {
                 <option value="">Nenhum</option>
                 {products.map((option, index) => (
                   <option key={index} value={option.id}>
-                    {option.name}
+                    {`${option.name} - R$ ${option.value}`}
                   </option>
                 ))}
               </TextField>
@@ -103,7 +103,7 @@ function OrdersRegister() {
                 <option value="">Nenhum</option>
                 {products.map((option, index) => (
                   <option key={index} value={option.id}>
-                    {option.name}
+                    {`${option.name} - R$ ${option.value}`}
                   </option>
                 ))}
               </TextField>
@@ -121,7 +121,7 @@ function OrdersRegister() {
                 <option value="">Nenhum</option>
                 {products.map((option, index) => (
                   <option key={index} value={option.id}>
-                    {option.name}
+                    {`${option.name} - R$ ${option.value}`}
                   </option>
                 ))}
               </TextField>
