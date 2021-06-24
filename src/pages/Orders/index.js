@@ -5,9 +5,14 @@ import {
   TableCell,
   TableRow,
   Paper,
+  Dialog,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
 } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 
+import api from '../../services/api';
 import { getOrders } from '../../services/ordersServices';
 import Header from '../../componentes/Header';
 import { dateFormat } from '../../utils/dateFormat';
@@ -25,6 +30,23 @@ import {
 function Orders() {
   const [orders, setOrders] = useState([]);
   const history = useHistory();
+  const [open, setOpen] = useState(false);
+  const [order, setOrder] = useState({});
+
+  const handleClickOpen = async (id) => {
+    try {
+      const response = await api.get(`/order/index/${id}`);
+
+      setOrder(response.data);
+      setOpen(true);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     getOrders().then((resp) => setOrders(resp));
@@ -59,7 +81,10 @@ function Orders() {
                     <TableCell align="center">{order.User.name}</TableCell>
                     <TableCell align="center">R$ {order.totalValue}</TableCell>
                     <TableCell align="center">
-                      <ViewIcon titleAccess="Visualizar Pedido" />
+                      <ViewIcon
+                        titleAccess="Visualizar Pedido"
+                        onClick={() => handleClickOpen(order.id)}
+                      />
                     </TableCell>
                   </TableRow>
                 ))}
@@ -70,6 +95,34 @@ function Orders() {
             Cadastrar
           </InsertBtn>
         </ContentPage>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">
+            Informações do Pedido
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText>id: {order.id}</DialogContentText>
+            <DialogContentText>Produto(s):</DialogContentText>
+            {order.products === undefined
+              ? 'Carregando...'
+              : order.products.map((element) => (
+                  <DialogContentText>
+                    + {element.name} - {element.value}
+                  </DialogContentText>
+                ))}
+            <DialogContentText>
+              Cliente:
+              {order.User === undefined ? 'Carregando...' : order.User.name}
+            </DialogContentText>
+            <DialogContentText>
+              Data: {dateFormat(order.createdAt)}
+            </DialogContentText>
+            <DialogContentText>Total: {order.totalValue}</DialogContentText>
+          </DialogContent>
+        </Dialog>
       </Container>
     </>
   );

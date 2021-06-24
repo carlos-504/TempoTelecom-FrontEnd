@@ -3,5 +3,5 @@ export const dateFormat = (createdDate) => {
 
   return `${formatedDate.getDate()}/${
     formatedDate.getMonth() + 1
-  }/${formatedDate.getFullYear()}`;
+  }/${formatedDate.getFullYear()} - ${formatedDate.getHours()}:${formatedDate.getMinutes()}`;
 };
