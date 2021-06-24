@@ -1,7 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import Header from '../../componentes/Header';
 import StoreImg from '../../assets/images/store.png';
 import {
   Container,
@@ -17,7 +16,6 @@ function Home() {
 
   return (
     <>
-      <Header />
       <Container>
         <ContentPage>
           <Store src={StoreImg} alt="img-loja" />

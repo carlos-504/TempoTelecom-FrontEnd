@@ -14,7 +14,6 @@ import { useHistory } from 'react-router-dom';
 
 import api from '../../services/api';
 import { getOrders } from '../../services/ordersServices';
-import Header from '../../componentes/Header';
 import { dateFormat } from '../../utils/dateFormat';
 import {
   Container,
@@ -54,7 +53,6 @@ function Orders() {
 
   return (
     <>
-      <Header />
       <Container>
         <ContentPage>
           <Typography>Lista de Pedidos</Typography>
