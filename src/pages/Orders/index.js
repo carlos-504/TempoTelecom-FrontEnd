@@ -108,11 +108,11 @@ function Orders() {
               ? 'Carregando...'
               : order.products.map((element) => (
                   <DialogContentText>
-                    + {element.name} - {element.value}
+                    + {element.name} - R$ {element.value}
                   </DialogContentText>
                 ))}
             <DialogContentText>
-              Cliente:
+              Cliente:{' '}
               {order.User === undefined ? 'Carregando...' : order.User.name}
             </DialogContentText>
             <DialogContentText>
